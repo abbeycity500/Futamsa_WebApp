@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - FUTAMSA{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+{% endblock %}
+
+{% block content %}
+<section class="home-banner">
+    <div class="slider">
+        <div class="slide"><img src="{{ url_for('static', filename='images/slide1.jpg') }}" alt="Slide 1"></div>
+        <div class="slide"><img src="{{ url_for('static', filename='images/slide2.jpg') }}" alt="Slide 2"></div>
+    </div>
+    <button class="slider-prev">Prev</button>
+    <button class="slider-next">Next</button>
+</section>
+<section class="intro">
+    <h1>Welcome to FUTAMSA</h1>
+    <p>Your source for the latest news, events, and updates from the FUTA Muslim Students' Association.</p>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/home.js') }}"></script>
+{% endblock %}

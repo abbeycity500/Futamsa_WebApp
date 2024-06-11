@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Register - FUTAMSA{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
+{% endblock %}
+
+{% block content %}
+<section class="auth-form-section">
+    <div class="auth-form">
+        <h1>Register</h1>
+        <form action="{{ url_for('auth.register') }}" method="post">
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+            <input type="submit" value="Register">
+        </form>
+        <p>Already have an account? <a href="{{ url_for('auth.login') }}">Login</a></p>
+    </div>
+</section>
+{% endblock %}

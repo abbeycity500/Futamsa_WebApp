@@ -1,0 +1,28 @@
+/* static/css/news.css */
+
+.news-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.news-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+.news-item h2 {
+    margin-bottom: 0.5rem;
+}
+
+.news-item p {
+    margin-bottom: 0.5rem;
+}
+
+.news-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}

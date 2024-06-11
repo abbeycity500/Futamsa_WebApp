@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ event.title }} - FUTAMSA{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/events.css') }}">
+{% endblock %}
+
+{% block content %}
+<section class="event-details-section">
+    <h1>{{ event.title }}</h1>
+    <p>{{ event.date }}</p>
+    <p>{{ event.description }}</p>
+    <div class="event-details">
+        <p>{{ event.details }}</p>
+    </div>
+</section>
+{% endblock %}

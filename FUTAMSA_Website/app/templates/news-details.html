@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ article.title }} - FUTAMSA{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/news.css') }}">
+{% endblock %}
+
+{% block content %}
+<section class="news-details-section">
+    <h1>{{ article.title }}</h1>
+    <p>{{ article.date }}</p>
+    <img src="{{ url_for('static', filename='images/news/' + article.image) }}" alt="{{ article.title }}">
+    <div class="news-content">
+        <p>{{ article.content }}</p>
+    </div>
+</section>
+{% endblock %}

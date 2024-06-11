@@ -1,0 +1,37 @@
+/* static/css/home.css */
+
+.slider {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    overflow: hidden;
+}
+
+.slider .slide {
+    display: none;
+}
+
+.slider .slide img {
+    width: 100%;
+}
+
+.slider .slider-prev,
+.slider .slider-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+
+.slider .slider-prev {
+    left: 10px;
+}
+
+.slider .slider-next {
+    right: 10px;
+}
+

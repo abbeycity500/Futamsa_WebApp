@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}About - FUTAMSA{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}">
+{% endblock %}
+
+{% block content %}
+<section class="about-section">
+    <h1>About FUTAMSA</h1>
+    <p>FUTAMSA is dedicated to serving the Muslim student community at FUTA. We provide a range of services and activities to support our members.</p>
+</section>
+{% endblock %}

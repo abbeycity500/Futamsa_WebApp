@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}FUTAMSA{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    {% block styles %}
+    {% if request.endpoint == 'main.index' %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+    {% elif request.endpoint == 'main.about' %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}">
+    {% elif request.endpoint == 'event.list_events' %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/events.css') }}">
+    {% elif request.endpoint == 'news.list_news' %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/news.css') }}">
+    {% elif request.endpoint == 'main.contact' %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/contact.css') }}">
+    {% elif request.endpoint == 'gallery.list_gallery' %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/gallery.css') }}">
+    {% elif request.endpoint.startswith('auth') %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
+    {% endif %}
+    {% endblock %}
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="container">
+                <a href="{{ url_for('main.index') }}" class="logo">FUTAMSA</a>
+                <div class="navbar-toggle"></div>
+                <div class="navbar-menu">
+                    <a href="{{ url_for('main.index') }}">Home</a>
+                    <a href="{{ url_for('main.about') }}">About</a>
+                    <a href="{{ url_for('event.list_events') }}">Events</a>
+                    <a href="{{ url_for('news.list_news') }}">News</a>
+                    <a href="{{ url_for('main.contact') }}">Contact</a>
+                    <a href="{{ url_for('gallery.list_gallery') }}">Gallery</a>
+                    {% if current_user.is_authenticated %}
+                    <a href="{{ url_for('auth.logout') }}">Logout</a>
+                    {% else %}
+                    <a href="{{ url_for('auth.login') }}">Login</a>
+                    <a href="{{ url_for('auth.register') }}">Register</a>
+                    {% endif %}
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {% for category, message in messages %}
+            <div class="flash-message {{ category }}">{{ message }}</div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+            {% block content %}
+            {% endblock %}
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 FUTAMSA. All rights reserved.</p>
+    </footer>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script >
+    {% block scripts %}
+    {% if request.endpoint == 'main.index' %}
+    <script src="{{ url_for('static', filename='js/home.js') }}"></script>
+    {% elif request.endpoint.startswith('event') %}
+    <script src="{{ url_for('static', filename='js/events.js') }}"></script>
+    {% endif %}
+    {% endblock %}
+    {% block scripts %}
+    {% endblock %}
+</body>
+</html>
